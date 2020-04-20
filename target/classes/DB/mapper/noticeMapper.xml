@@ -5,28 +5,50 @@
   
 <mapper namespace="com.hj.s6.notice.NoticeDAO">
 
+	<sql id="search">
+	  like '%'||#{search}||'%'
+	</sql>
+	
 	<!-- 전체 글의 개수  -->
-	<select id="boardCount" resultType="java.lang.Long">
-		select count(num) from notice
+	<select id="boardCount" parameterType="com.hj.s6.board.page.Pager" resultType="java.lang.Long">
+		select count(num) from notice 
+			<where>
+				<if test="kind == 'title'"> title <include refid="search"></include> </if>
+				<if test="kind == 'writer'"> writer <include refid="search"></include> </if>
+				<if test="kind == 'contents'"> contents <include refid="search"></include> </if>
+			</where> 
 	</select>
-	<select id="boardList" parameterType = "java.util.Map" resultType="com.hj.s6.notice.NoticeVO">
+	
+	<select id="boardList" parameterType="com.hj.s6.board.page.Pager" resultType="com.hj.s6.notice.NoticeVO">	
 		select * from
-		(select N.*, rownum R from  
-		(select * from notice order by num desc) N)
+			(select N.*, rownum R from
+				(select * from notice where 
+				<choose>
+					<when test="kind == 'title'"> title </when>
+					<when test="kind == 'writer'"> writer </when>
+					<otherwise> contents </otherwise>
+				</choose>
+				
+				like '%'||#{search}||'%' and num>=1 order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>
+	
 	<select id="boardSelect" parameterType="java.lang.Long" resultType="com.hj.s6.notice.NoticeVO">
 		select * from notice where num = #{num}	
 	</select>
+	
 	<insert id="boardWrite" parameterType="com.hj.s6.notice.NoticeVO">
 		insert into notice values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
 	</insert>
+	
 	<delete id="boardDelete" parameterType="java.lang.Long">
 		delete notice where num = #{num}
 	</delete>
+	
 	<update id="boardUpdate" parameterType="com.hj.s6.notice.NoticeVO">
 		update notice SET title= #{title}, contents= #{contents} where num = #{num}
 	</update>
+	
 	<update id="hitUpdate" parameterType="java.lang.Long">
 		update notice SET hit=hit+1 where num=#{num}
 	</update>

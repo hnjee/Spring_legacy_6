@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "com.hj.s6.member.MemberDAO">
+	<sql id="search">
+	  like '%'||#{search}||'%'
+	</sql>
+	
+	<!-- 전체 글의 개수 구하기 -->
+	<select id="memberCount" parameterType="com.hj.s6.member.memberPager.MemberPager" resultType="java.lang.Long">
+		select count(id) from member 
+		<where>
+			<if test="kind == 'id'">id <include refid="search"></include></if>
+			<if test="kind == 'name'">name <include refid="search"></include></if>
+			<if test="kind == 'email'">email <include refid="search"></include></if>
+		</where>
+	</select>
+	
+	<select id="memberList" parameterType="com.hj.s6.member.memberPager.MemberPager" resultType="com.hj.s6.member.MemberVO">
+		select * from
+			(select N.*, rownum R from
+				(select * from member where 
+				<choose>
+					<when test="kind == 'email'"> email </when>
+					<when test="kind == 'name'"> name </when>
+					<otherwise> id </otherwise>
+				</choose>
+				like '%'||#{search}||'%') N)
+		where R between #{startRow} and #{lastRow}
+	</select>
+</mapper>

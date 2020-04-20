@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hj.s6.board.BoardVO;
+import com.hj.s6.board.page.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -25,11 +26,12 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value="noticeList", method=RequestMethod.GET)
-	public ModelAndView boardList(@RequestParam(defaultValue="1") int curPage, ModelAndView mv) throws Exception{
-		System.out.println(curPage);
+	public ModelAndView boardList(Pager pager, ModelAndView mv) throws Exception{		
 		
-		List<BoardVO> ar = noticeService.boardList(curPage);
+		List<BoardVO> ar = noticeService.boardList(pager);  
+		
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("board/boardList");
 		return mv;
 	}

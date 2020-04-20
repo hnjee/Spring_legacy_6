@@ -4,13 +4,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.hj.s6.board.BoardService;
 import com.hj.s6.board.BoardVO;
+import com.hj.s6.board.page.Pager;
 
 public class QnaService implements BoardService{
 	@Autowired
 	private QnaDAO qnaDAO;
 
 	@Override
-	public List<BoardVO> boardList(int curPage) throws Exception {
+	public List<BoardVO> boardList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
