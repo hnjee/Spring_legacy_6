@@ -9,8 +9,6 @@
 		<typeAlias type="com.hj.s6.notice.NoticeVO" alias="NoticeVO"/>
 		<typeAlias type="com.hj.s6.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.hj.s6.qna.QnaVO" alias="QnaVO"/>
-		
 		<typeAlias type="com.hj.s6.util.Pager" alias="Pager"/>
-	
 	</typeAliases>
 </configuration>  

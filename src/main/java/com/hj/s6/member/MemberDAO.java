@@ -17,12 +17,27 @@ public class MemberDAO {
 	private final String NAMESPACE = "com.hj.s6.member.MemberDAO.";
 	
 	
-	public long MemberCount(Pager memberPager) throws Exception{
+	public long memberCount(Pager memberPager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberCount", memberPager);
 	}
 	
-	public List<MemberVO> MemberList(Pager memberPager) throws Exception{
+	public List<MemberVO> memberList(Pager memberPager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"memberList", memberPager);
 	}
 	
+	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
+	}
+	
+	public int memberJoin(MemberVO memberVO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"memberJoin", memberVO);
+	}
+	
+	public int memberUpdate(MemberVO memberVO)throws Exception{
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberVO);
+	}
+	
+	public int memberDelete(MemberVO memberVO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberVO);
+	}
 }

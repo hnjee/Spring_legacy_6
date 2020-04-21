@@ -25,6 +25,7 @@
 		<c:if test="${board ne 'notice'}">
 			<a href="./${board}Reply?num=${vo.num}" class="btn btn-info"> Reply </a>
 		</c:if>
+	
 	</div>
 	<br> <br> <br> <br>
 	</div>
