@@ -1,6 +1,6 @@
-package com.hj.s6.member.memberPager;
+package com.hj.s6.util;
 
-public class MemberPager {
+public class Pager {
 	private long totalPage;			//전체 페이지의 수 
 	private long totalBlock;		//전체 페이지 블럭의 수 
 	
@@ -167,3 +167,4 @@ public class MemberPager {
 		this.search = search;
 	}
 }
+

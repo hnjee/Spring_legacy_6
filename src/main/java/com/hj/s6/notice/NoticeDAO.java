@@ -1,13 +1,13 @@
 package com.hj.s6.notice;
 
 import java.util.List;
-import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.hj.s6.board.BoardDAO;
 import com.hj.s6.board.BoardVO;
-import com.hj.s6.board.page.Pager;
+import com.hj.s6.util.Pager;
+
 
 @Repository
 public class NoticeDAO implements BoardDAO {

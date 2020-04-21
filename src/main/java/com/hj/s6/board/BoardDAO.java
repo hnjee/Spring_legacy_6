@@ -1,9 +1,8 @@
 package com.hj.s6.board;
 
 import java.util.List;
-import java.util.Map;
 
-import com.hj.s6.board.page.Pager;
+import com.hj.s6.util.Pager;
 
 public interface BoardDAO {
 	//인터페이스

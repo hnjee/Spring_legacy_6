@@ -1,15 +1,12 @@
 package com.hj.s6.notice;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.hj.s6.board.BoardService;
 import com.hj.s6.board.BoardVO;
-import com.hj.s6.board.page.Pager;
+import com.hj.s6.util.Pager;
+
 
 @Service
 public class NoticeService implements BoardService {

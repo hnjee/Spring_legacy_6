@@ -2,7 +2,8 @@ package com.hj.s6.board;
 
 import java.util.List;
 
-import com.hj.s6.board.page.Pager;
+import com.hj.s6.util.Pager;
+
 
 public interface BoardService {
 

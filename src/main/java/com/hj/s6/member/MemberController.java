@@ -7,8 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.hj.s6.util.Pager;
 
-import com.hj.s6.member.memberPager.MemberPager;
 
 
 @Controller
@@ -18,7 +18,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@RequestMapping(value="memberList", method=RequestMethod.GET)
-	public ModelAndView boardList(MemberPager memberPager, ModelAndView mv) throws Exception{
+	public ModelAndView boardList(Pager memberPager, ModelAndView mv) throws Exception{
 		List<MemberVO> ar = memberService.memberList(memberPager);
 		mv.addObject("list", ar);
 		mv.addObject("pager", memberPager);
