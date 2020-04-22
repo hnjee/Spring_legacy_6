@@ -8,24 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.hj.s6.util.Pager;
 
-
-
 @Repository
 public class MemberDAO {
+	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE = "com.hj.s6.member.MemberDAO.";
+	private final String NAMESPACE="com.hj.s6.member.MemberDAO.";
 	
-	
-	public long memberCount(Pager memberPager) throws Exception{
+	public Long memberCount(Pager memberPager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberCount", memberPager);
 	}
 	
-	public List<MemberVO> memberList(Pager memberPager) throws Exception{
+	public List<MemberVO> memberList(Pager memberPager)throws Exception{
 		return sqlSession.selectList(NAMESPACE+"memberList", memberPager);
 	}
 	
-	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
+	public MemberVO memberLogin(MemberVO memberVO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
 	}
 	
@@ -40,4 +38,7 @@ public class MemberDAO {
 	public int memberDelete(MemberVO memberVO)throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberDelete", memberVO);
 	}
+	
+	
+
 }
