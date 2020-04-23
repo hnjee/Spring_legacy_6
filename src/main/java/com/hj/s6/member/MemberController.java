@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,8 +21,7 @@ import com.hj.s6.util.Pager;
 
 
 @Controller
-@RequestMapping(value = "/member/**")
-public class MemberController {
+@RequestMapping(value = "/member/**")public class MemberController {
 
 	@Autowired
 	private MemberService memberService;
@@ -85,7 +85,7 @@ public class MemberController {
 		response.addCookie(cookie);
 		
 		 memberVO = memberService.memberLogin(memberVO);
-		
+		 System.out.println(memberVO);
 		 if(memberVO != null) {
 			 session.setAttribute("member", memberVO);
 			 mv.setViewName("redirect:../");
@@ -103,10 +103,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value= "memberPage")
-	public void memberPage(HttpSession session, Model model) throws Exception {
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		MemberFileVO memberFileVO = memberService.fileSelect(memberVO.getId());
-		model.addAttribute("file", memberFileVO);
+	public void memberPage() throws Exception {
+
 	}
 
 	
@@ -150,6 +148,13 @@ public class MemberController {
 		}
 		
 		return mv;
+	}
+	
+	@GetMapping("fileDelete")
+	public String fileDelete(HttpSession session)throws Exception{
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		memberService.fileDelete(memberVO.getId(), session);
+		return "redirect:./memberPage";
 	}
 	
 }

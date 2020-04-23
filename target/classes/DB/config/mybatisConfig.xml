@@ -12,5 +12,6 @@
 		<typeAlias type="com.hj.s6.qna.QnaVO" alias="QnaVO"/>
 		<typeAlias type="com.hj.s6.util.Pager" alias="Pager"/>
 		<typeAlias type="com.hj.s6.member.memberFile.MemberFileVO" alias="MemberFileVO"/>
+		<typeAlias type="com.hj.s6.board.file.BoardFileVO" alias="BoardFileVO"/>
 	</typeAliases>
 </configuration>  

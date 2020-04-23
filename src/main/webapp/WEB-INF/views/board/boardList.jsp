@@ -71,7 +71,7 @@
 			</div>
 			
 			<c:choose>
-				<c:when test="${board ne 'notice'}">
+				<c:when test="${board eq 'notice'}">
 					<c:if test="${member.id eq 'admin' }">
 						<div>
 							<a href="./${board}Write" class="btn btn-danger">WRITE</a>

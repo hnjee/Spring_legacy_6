@@ -28,6 +28,12 @@
 	      <label for="contents">내용 </label> <br/>
 	      <input type="text" class="form-control" id="contents" placeholder="Enter Contents" name="contents">
 	    </div>  
+	    
+	    <div class="form-group">
+	      <label for="files">첨부파일 </label> <br/>
+	      <input type="file" class="form-control" name="files">
+	      <input type="file" class="form-control" name="files">
+	    </div>  
 	  
 	    <button type="submit" class="btn btn-default">Submit</button>
 	  </form>

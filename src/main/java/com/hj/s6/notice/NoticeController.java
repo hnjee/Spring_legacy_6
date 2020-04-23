@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hj.s6.board.BoardVO;
@@ -51,8 +53,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView boardWrite(NoticeVO noticeVO, ModelAndView mv)throws Exception{
-		int res = noticeService.boardWrite(noticeVO);
+	public ModelAndView boardWrite(NoticeVO noticeVO, ModelAndView mv, MultipartFile[] files)throws Exception{
+		
+		int res = noticeService.boardWrite(noticeVO, files);
 		if(res>0) {
 			mv.setViewName("redirect:./noticeList");
 		} else {
