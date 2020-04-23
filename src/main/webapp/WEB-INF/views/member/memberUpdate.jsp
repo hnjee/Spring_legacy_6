@@ -11,7 +11,14 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>  
-
+	<div class="container">
+		<div class="jumbotron">
+			<h1>MemberUpdate</h1>
+			<p>Bootstrap is the most popular HTML, CSS, and JS framework for
+				developing responsive, mobile-first projects on the web.</p>
+		</div>
+	</div>
+	
 	<div class="container">
 	  <h1>Member Information 수정</h1>
 	  <form action="./memberUpdate" method="post">
@@ -46,6 +53,14 @@
 	    <button class="btn btn-primary">Update</button>
 	  </form> 
 	</div>
+	
+	<script type="text/javascript">
+		<c:if test="${method eq 'POST' and result ne 1}">
+				alert('비밀번호 일치하지 않아 정보 수정에 실패하였습니다');
+   		</c:if>
+	</script>
+	
+	    
 	
 </body>
 </html>

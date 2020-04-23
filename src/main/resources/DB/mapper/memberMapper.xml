@@ -30,20 +30,4 @@
 				like '%'||#{search}||'%') N)
 		where R between #{startRow} and #{lastRow}
 	</select>
-	
-	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
-		select * from member where id = #{id} and pw = #{pw}
-	</select>
-	
-	<insert id="memberJoin" parameterType="MemberVO">
-		insert into member values(#{id}, #{pw}, #{name}, #{email}, #{phone}, #{age})
-	</insert>
-	
-	<update id="memberUpdate" parameterType="MemberVO">
-		update member set name=#{name}, email=#{email}, phone=#{phone}, age=#{age} where id=#{id}
-	</update>
-	
-	<delete id="memberDelete" parameterType="MemberVO">
-		delete member where id=#{id}
-	</delete>
 </mapper>

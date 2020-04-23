@@ -13,6 +13,14 @@
 	<c:import url="../template/header.jsp"></c:import>  
 
 	<div class="container">
+		<div class="jumbotron">
+			<h1>Bootstrap Tutorial</h1>
+			<p>Bootstrap is the most popular HTML, CSS, and JS framework for
+				developing responsive, mobile-first projects on the web.</p>
+		</div>
+	</div>
+
+	<div class="container">
 		<div class="row">
 			<form class="form-horizontal" action="./memberLogin" method="post">
 				<div class="form-group">
@@ -31,7 +39,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<div class="checkbox">
-							<label><input type="checkbox" name="remember" value="remember">Remember me</label>
+							<label><input type="checkbox" name="remember">Remember me</label>
 						</div>
 					</div>
 				</div>

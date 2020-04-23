@@ -13,8 +13,15 @@
 	<c:import url="../template/header.jsp"></c:import>  
 	
 	<div class="container">
+	  <div class="jumbotron">
+	  	<h1>회원가입 페이지</h1>
+	  	<p>회원가입을 할 수 있는 페이지입니다 </p>
+	  </div>     
+	</div>
+	
+	<div class="container">
 	  <h1>Member Join</h1>
-	  <form action="./memberJoin" method="post" enctype="multipart/form-data">
+	  <form action="./memberJoin" method="post">
 	    <div class="form-group">
 	      <label for="id">아이디:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id" value="${id}">
@@ -43,11 +50,7 @@
 	      <label for="email">E-mail: </label>
 	      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
 	    </div> 
-	   	<div class="form-group">
-	      <label for="pic">사진: </label>
-	      <input type="file" class="form-control" id="pic" placeholder="사진을 첨부하세요" name="pic">
-	    </div> 
-	    
+	   
 	    <button type="submit" class="btn btn-default">Submit</button>
 	  </form>
 	</div>

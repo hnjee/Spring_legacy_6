@@ -69,23 +69,9 @@
 					</c:if>
 				</ul>
 			</div>
-			
-			<c:choose>
-				<c:when test="${board ne 'notice'}">
-					<c:if test="${member.id eq 'admin' }">
-						<div>
-							<a href="./${board}Write" class="btn btn-danger">WRITE</a>
-						</div>
-					</c:if>
-				</c:when>
-				<c:otherwise>
-					<c:if test="${not empty member}">
-						<a href="./${board}Write" class="btn btn-danger">WRITE</a>
-					</c:if>
-				</c:otherwise>
-			</c:choose>
-		
-			
+			<div>
+				<a href="./${board}Write" class="btn btn-danger">WRITE</a>
+			</div>
 		</div>
 		<br> <br> <br> <br>
 	</div>
