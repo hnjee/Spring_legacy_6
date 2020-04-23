@@ -45,7 +45,7 @@
 	    </div> 
 	   	<div class="form-group">
 	      <label for="pic">사진: </label>
-	      <input type="file" class="form-control" id="avatar" placeholder="사진을 첨부하세요" name="avatar">
+	      <input type="file" class="form-control" id="pic" placeholder="사진을 첨부하세요" name="pic">
 	    </div> 
 	    
 	    <button type="submit" class="btn btn-default">Submit</button>
