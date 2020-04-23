@@ -12,6 +12,7 @@ import com.hj.s6.member.memberFile.MemberFileVO;
 import com.hj.s6.member.memberFile.MemberFileDAO;
 import com.hj.s6.util.FileSaver;
 import com.hj.s6.util.Pager;
+
 @Service
 public class MemberService {
 	
@@ -60,16 +61,12 @@ public class MemberService {
 		return result;//memberDAO.memberJoin(memberVO);
 	}
 	
-
-	
-	public int fileDelete(String id, HttpSession session)throws Exception{
-		MemberFileVO memberFileVO = memberFileDAO.fileSelect(id);
-		int result = memberFileDAO.fileDelete(id);
-		if(result>0) {
-			String path = session.getServletContext().getRealPath("/resources/memberUpload");
-			result = fileSaver.deleteFile(memberFileVO.getFileName(), path);
-		}
-		return result;
+	public MemberFileVO fileSelect(String id)throws Exception{
+		return memberFileDAO.fileSelect(id);		
 	}
-
+	
+//	public int fileDelete(String id, HttpSession session) throws Exception{
+//		MemberFileVO memberFileVO = memberFileDAO.fileSelect(id);
+//	}
 }
+

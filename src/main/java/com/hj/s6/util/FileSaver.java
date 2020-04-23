@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @Component
 public class FileSaver {
 	
@@ -86,20 +87,17 @@ public class FileSaver {
 		return result;
 	}
 	
-	//file Delete
-	public int deleteFile(String fileName, String path)throws Exception{
+	//file Delete 
+	public int deleteFile(String fileName, String path) throws Exception{
 		File file = new File(path, fileName);
-		boolean check=false;
-		int result=0;
+		Boolean check = false;
+		int result = 0;
 		if(file.exists()) {
 			check = file.delete();
 		}
-		
-		if(check) {
+		if (check) {
 			result=1;
 		}
-		
 		return result;
 	}
-
 }
