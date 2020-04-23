@@ -7,9 +7,9 @@
 	<sql id="search">
 		where
 		<choose>
-			<when test="kind == 'title'">title</when>
+			<when test="kind == 'contents'">contents</when>
 			<when test="kind == 'writer'">writer</when>
-			<otherwise>contents</otherwise>		
+			<otherwise>title</otherwise>		
 		</choose>
 		like '%'||#{search}||'%'
 	</sql>
@@ -60,6 +60,7 @@
 			title = #{title},
 			writer = #{writer},
 			contents = #{contents}
+		where num=#{num}
 	</update>
 	<delete id="boardDelete" parameterType="Long">
 		delete qna where num=#{num}

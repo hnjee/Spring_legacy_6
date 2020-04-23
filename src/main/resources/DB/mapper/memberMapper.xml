@@ -12,9 +12,9 @@
 	<select id="memberCount" parameterType="Pager" resultType="Long">
 		select count(id) from member 
 		<where>
-			<if test="kind == 'id'">id <include refid="search"></include></if>
-			<if test="kind == 'name'">name <include refid="search"></include></if>
-			<if test="kind == 'email'">email <include refid="search"></include></if>
+			<if test="kind == 'id'"> id <include refid="search"></include></if>
+			<if test="kind == 'name'"> name <include refid="search"></include></if>
+			<if test="kind == 'email'"> email <include refid="search"></include></if>
 		</where>
 	</select>
 	

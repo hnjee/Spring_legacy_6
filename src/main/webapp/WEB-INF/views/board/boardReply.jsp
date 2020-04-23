@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<c:import url = "../template/boot.jsp"></c:import>
+	<c:import url = "../template/summer.jsp"></c:import>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
@@ -29,9 +30,19 @@
 	      <label for="contents">내용 </label> <br/>
 	      <input type="text" class="form-control" id="contents" placeholder="Enter Contents" name="contents">
 	    </div>  
-	
+		<input type="hidden" id="con" name="contents">
+		
 	    <button type="submit" class="btn btn-default">Submit</button>
 	  </form>
 	</div>
+	<script type="text/javascript">
+		$("#contents").summernote({
+			height: 400
+		});
+		$("#btn").click(function(){
+			$("#con").val($("#contents").summernote('code'));
+			$("#frm").submit();
+		});
+	</script>
 </body>
 </html>

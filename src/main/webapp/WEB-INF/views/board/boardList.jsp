@@ -38,11 +38,9 @@
 					<td>HIT</td>
 				</tr>
 				
-			
 				<c:forEach items="${list}" var="vo">
 					<tr>
 						<td>${vo.num}</td>
-						
 						<td>
 							<c:catch>	
 								<c:forEach begin="1" end="${vo.depth}"> -> </c:forEach>
@@ -54,7 +52,6 @@
 						<td>${vo.hit}</td>
 					</tr>
 				</c:forEach>
-			  
 			</table>
 			
 			<div>

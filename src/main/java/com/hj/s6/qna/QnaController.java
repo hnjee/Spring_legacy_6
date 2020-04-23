@@ -84,7 +84,9 @@ public class QnaController {
 	
 	@GetMapping("qnaUpdate")
 	public ModelAndView qnaUpdate(long num, ModelAndView mv) throws Exception{
-		mv.addObject("num", num); //수정하는 글의 번호
+		System.out.println("글번호: " +num);
+		BoardVO boardVO = qnaService.boardSelect(num);
+		mv.addObject("vo", boardVO);
 		mv.setViewName("board/boardUpdate");
 		return mv;
 	}
@@ -96,7 +98,7 @@ public class QnaController {
 			mv.setViewName("redirect:./qnaList");
 		} else {
 			mv.addObject("result", "Qna Update Fail");
-			mv.addObject("path", "./qnaList");
+			mv.addObject("path", "qnaList");
 			mv.setViewName("common/result");
 		}
 		return mv;

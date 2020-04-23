@@ -24,11 +24,10 @@
 			(select N.*, rownum R from
 				(select * from notice where 
 				<choose>
-					<when test="kind == 'title'"> title </when>
+					<when test="kind == 'contents'"> contents </when>
 					<when test="kind == 'writer'"> writer </when>
-					<otherwise> contents </otherwise>
+					<otherwise> title </otherwise>
 				</choose>
-				
 				like '%'||#{search}||'%' and num>=1 order by num desc) N)
 		where R between #{startRow} and #{lastRow}
 	</select>

@@ -15,8 +15,8 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public List<BoardVO> boardList(Pager pager) throws Exception {
+
 		pager.makeRow();
-	
 		long totalCount = noticeDAO.boardCount(pager);
 		pager.makePage(totalCount);
 
