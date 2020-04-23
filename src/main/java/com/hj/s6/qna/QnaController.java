@@ -81,4 +81,38 @@ public class QnaController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("qnaUpdate")
+	public ModelAndView qnaUpdate(long num, ModelAndView mv) throws Exception{
+		mv.addObject("num", num); //수정하는 글의 번호
+		mv.setViewName("board/boardUpdate");
+		return mv;
+	}
+	
+	@PostMapping("qnaUpdate")
+	public ModelAndView qnaUpdate(QnaVO qnaVO, ModelAndView mv) throws Exception{
+		int res = qnaService.boardUpdate(qnaVO);
+		if(res>0) {
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.addObject("result", "Qna Update Fail");
+			mv.addObject("path", "./qnaList");
+			mv.setViewName("common/result");
+		}
+		return mv;
+	}
+	
+	@GetMapping("qnaDelete")
+	public ModelAndView qnaDelete(long num, ModelAndView mv) throws Exception{
+		int res = qnaService.boardDelete(num);
+		String msg = "Qna 삭제 Fail";
+		
+		if(res>0) {
+			msg="Qna 삭제 Success";
+		} 
+		mv.addObject("result", msg);
+		mv.addObject("path", "./qnaList");
+		mv.setViewName("common/result");	
+		return mv;
+	}
 }

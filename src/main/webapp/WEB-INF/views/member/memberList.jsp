@@ -63,10 +63,14 @@
 					</c:if>
 				</ul>
 			</div>
-			<div>
-				<a href="./memberJoin" class="btn btn-primary">ADD</a>
-				<a href="./memberDelete" class="btn btn-danger">DELETE</a>
-			</div>
+			<c:catch>
+				<c:if test="${member.id eq 'admin'}">
+					<div>
+						<a href="./memberJoin" class="btn btn-primary">ADD</a>
+						<a href="./memberDelete" class="btn btn-danger">DELETE</a>
+					</div>
+				</c:if>
+			</c:catch>
 		</div>
 		<br> <br> <br> <br>
 	</div>

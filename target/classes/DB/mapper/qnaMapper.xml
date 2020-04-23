@@ -39,7 +39,7 @@
 	<update id="boardReplyUpdate" parameterType="QnaVO">
 		update qna set step = step+1 
 		where ref = (select ref from qna where num=#{num}) 
-		and step = (select step from qna where num=#{num}) 
+		and step > (select step from qna where num=#{num}) 
 	
 	</update>
 	
@@ -54,4 +54,14 @@
 	<update id="hitUpdate" parameterType="Long">
 		update qna SET hit=hit+1 where num=#{num}
 	</update>
+	
+	<update id="boardUpdate" parameterType="QnaVO">
+		update qna set 
+			title = #{title},
+			writer = #{writer},
+			contents = #{contents}
+	</update>
+	<delete id="boardDelete" parameterType="Long">
+		delete qna where num=#{num}
+	</delete>
 </mapper>

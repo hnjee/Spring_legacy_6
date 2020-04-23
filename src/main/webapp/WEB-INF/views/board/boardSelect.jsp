@@ -20,11 +20,25 @@
 			<h2>Hit : ${vo.hit}</h2>	
 	</div>
 	<div>
-		<a href="./${board}Update?num=${vo.num}" class="btn btn-primary"> Update</a>
-		<a href="./${board}Delete?num=${vo.num}" class="btn btn-danger"> Delete</a>
-		<c:if test="${board ne 'notice'}">
-			<a href="./${board}Reply?num=${vo.num}" class="btn btn-info"> Reply </a>
-		</c:if>
+		<c:catch>
+			<c:choose>
+				<c:when test="${board ne 'notice'}">
+					<c:if test="${not empty member}"> 
+						<a href="./${board}Reply?num=${vo.num}" class="btn btn-info"> Reply </a>
+						<a href="./${board}Update?num=${vo.num}" class="btn btn-primary"> Update</a>
+						<a href="./${board}Delete?num=${vo.num}" class="btn btn-danger"> Delete</a>
+					</c:if>
+				</c:when>
+				<c:otherwise>
+				 	<c:if test="${member.id eq 'admin'}">
+				 		<a href="./${board}Update?num=${vo.num}" class="btn btn-primary"> Update</a>
+						<a href="./${board}Delete?num=${vo.num}" class="btn btn-danger"> Delete</a>
+				 	</c:if>
+				</c:otherwise>
+			</c:choose>
+		</c:catch>
+		
+		
 	</div>
 	<br> <br> <br> <br>
 	</div>

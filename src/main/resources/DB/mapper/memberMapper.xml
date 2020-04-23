@@ -30,4 +30,13 @@
 				like '%'||#{search}||'%') N)
 		where R between #{startRow} and #{lastRow}
 	</select>
+	
+	<select id="memberLogin" parameterType="MemberVO" resultType="MemberVO">
+		select * from member 
+		where id=#{id} and pw=#{pw}
+	</select>
+	
+	<insert id="memberJoin" parameterType="MemberVO">
+		insert into member values(#{id}, #{pw}, #{name}, #{age}, #{email}, #{phone}) 
+	</insert>
 </mapper>

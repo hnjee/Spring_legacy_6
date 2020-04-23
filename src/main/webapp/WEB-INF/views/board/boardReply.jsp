@@ -11,7 +11,7 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-	  <h1>글쓰기</h1>
+	  <h1>답글 쓰기</h1>
 	  <form action="./${board}Reply" method="post">
 	 	
 	 	<input type="hidden" name="num" value="${num}">

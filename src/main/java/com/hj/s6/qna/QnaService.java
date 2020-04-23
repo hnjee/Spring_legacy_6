@@ -28,26 +28,22 @@ public class QnaService implements BoardService{
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
 		return qnaDAO.boardWrite(boardVO);
 	}
 	
 	@Override
 	public BoardVO boardSelect(long num) throws Exception {
 		qnaDAO.hitUpdate(num);
-		// TODO Auto-generated method stub
 		return qnaDAO.boardSelect(num);
 	}
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardUpdate(boardVO);
 	}
 
 	@Override
 	public int boardDelete(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDAO.boardDelete(num);
 	}
 }

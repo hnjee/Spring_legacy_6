@@ -11,15 +11,12 @@
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>  
-
+	<br> <br>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Bootstrap Tutorial</h1>
-			<p>Bootstrap is the most popular HTML, CSS, and JS framework for
-				developing responsive, mobile-first projects on the web.</p>
-		</div>
+		  	<h1>로그인 페이지</h1>
+		</div>     
 	</div>
-
 	<div class="container">
 		<div class="row">
 			<form class="form-horizontal" action="./memberLogin" method="post">
@@ -43,6 +40,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-default">Submit</button>
@@ -51,5 +49,6 @@
 			</form>
 		</div>
 	</div>
+		<br> <br>
 </body>
 </html>

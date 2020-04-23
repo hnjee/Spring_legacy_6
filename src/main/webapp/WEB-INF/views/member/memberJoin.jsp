@@ -24,7 +24,7 @@
 	  <form action="./memberJoin" method="post">
 	    <div class="form-group">
 	      <label for="id">아이디:</label>
-	      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id" value="${id}">
+	      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
 	    </div>
 	
 	    <div class="form-group">

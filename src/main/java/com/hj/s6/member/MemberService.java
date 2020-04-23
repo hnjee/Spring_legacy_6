@@ -15,13 +15,20 @@ public class MemberService {
 	
 	public List<MemberVO> memberList(Pager memberPager) throws Exception{							
 		memberPager.makeRow();	
-		long totalCount = memberDAO.MemberCount(memberPager); 
+		long totalCount = memberDAO.memberCount(memberPager); 
 		memberPager.makePage(totalCount);
 		
 		System.out.println(totalCount);
 		System.out.println(memberPager.getTotalPage());
 		System.out.println(memberPager.getTotalBlock());
-		return memberDAO.MemberList(memberPager);
+		return memberDAO.memberList(memberPager);
 	}
-
+	
+	public MemberVO memberLogin(MemberVO memberVO) throws Exception{
+		return memberDAO.memberLogin(memberVO);
+	}
+	
+	public int memberJoin(MemberVO memberVO) throws Exception{
+		return memberDAO.memberJoin(memberVO);
+	}
 }
