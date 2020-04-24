@@ -33,4 +33,8 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"memberJoin", memberVO);
 	}
 	
+	public long memberIdCheck(String id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"memberIdCheck", id);
+	}
+	
 }

@@ -1,10 +1,14 @@
 package com.hj.s6.notice;
 
+import java.util.Enumeration;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,7 +31,6 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeList", method=RequestMethod.GET)
 	public ModelAndView boardList(Pager pager, ModelAndView mv) throws Exception{	
-		System.out.println(pager);
 		List<BoardVO> ar = noticeService.boardList(pager);  
 	
 		mv.addObject("list", ar);

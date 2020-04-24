@@ -31,4 +31,8 @@ public class MemberService {
 	public int memberJoin(MemberVO memberVO) throws Exception{
 		return memberDAO.memberJoin(memberVO);
 	}
+	
+	public long memberIdCheck(String id) throws Exception{
+		return memberDAO.memberIdCheck(id);
+	}
 }

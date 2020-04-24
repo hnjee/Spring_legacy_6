@@ -60,6 +60,18 @@
 	  </div>
 	</div>
 	
+	<button id="btn">BUTTON</button>
+	<script type="text/javascript">
+		$("#btn").click(function(){
+			//jQuery ajax
+			//GET방식일 때
+			alert("start");
+			$.get("./notice/noticeSelect?num=296", function(result){
+				console.log(result);
+			});
+			alert("finish");
+		});
+	</script>
 </body>
 
 </html>

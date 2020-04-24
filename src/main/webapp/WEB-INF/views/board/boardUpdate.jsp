@@ -13,36 +13,32 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 	  <h1>글 수정하기</h1>
-	  <form action="./${board}Update" method="post">
+	  <form action="./${board}Update" method="post" id="frm">
 	 
 	   <input type="hidden" class="form-control" id="num" name="num" value="${vo.num}">
 	   <div class="form-group">
 	      <label for="title">제목</label> <br/>
-	      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+	      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="${vo.title}">
 	    </div>    
 	    
 	    <div class="form-group">
 	      <label for="writer"> 작성자 </label> <br/>
-	      <input type="text" class="form-control" id="writer" name="writer" value="${vo.writer}" readonly> 
+	      <input type="text" class="form-control" id="writer" name="writer" value="${vo.writer}" readonly="readonly"> 
 	    </div> 
 	    
 	    <div class="form-group">
 	      <label for="contents">내용 </label> <br/>
-	      <input type="text" class="form-control" id="contents" placeholder="Enter Contents" name="contents">
+	      <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 	    </div>  
-	   <input type="hidden" id="con" name="contents">
-	  
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    
+	    <input type="button" id="add" class="btn btn-info" value="AddFile">
+		<div id="file"> </div>
+  
+	    <input type="button" id="btn" class="btn btn-default" value="Write">
 	  </form>
 	</div>
-	<script type="text/javascript">
-		$("#contents").summernote({
-			height: 400
-		});
-		$("#btn").click(function(){
-			$("#con").val($("#contents").summernote('code'));
-			$("#frm").submit();
-		});
-	</script>
+	
+	<script type="text/javascript" src="../resources/js/boardForm.js">		
+	</script> 
 </body>
 </html>

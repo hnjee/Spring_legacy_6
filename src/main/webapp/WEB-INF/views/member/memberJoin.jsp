@@ -54,5 +54,18 @@
 	    <button type="submit" class="btn btn-default">Submit</button>
 	  </form>
 	</div>
+	
+	<script type="text/javascript">
+		$("#id").blur(function(){
+			var id = $("#id").val();
+			//ajax 
+			$.post("./memberIdCheck", {id:id}, function(data){
+				data=data.trim();
+				if(data>0){ //id가 중복된거 
+					alert("id 중복됐습니다~");
+				} 
+			});
+		});
+	</script>
 </body>
 </html>

@@ -99,4 +99,11 @@ public class MemberController {
 	
 		return mv;
 	}
+	@PostMapping("memberIdCheck")
+	public ModelAndView memberIdCheck(String id, ModelAndView mv) throws Exception {
+		long res = memberService.memberIdCheck(id);
+		mv.addObject("result", res);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
 }

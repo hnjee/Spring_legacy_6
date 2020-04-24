@@ -22,28 +22,22 @@
 	    
 	    <div class="form-group">
 	      <label for="writer"> 작성자 </label> <br/>
-	      <input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer">
+	      <input type="text" class="form-control" id="writer" placeholder="Enter Writer" name="writer" value="${member.id}" readonly="readonly">
 	    </div> 
 	    
 	    <div class="form-group">
 	      <label for="contents">내용 </label> <br/>
-	      <input type="text" class="form-control" id="contents" placeholder="Enter Contents" name="contents1">
+	      <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 	    </div>  
-	  <input type="hidden" id="con" name="contents">
-	    <button type="button" class="btn btn-default" id="btn">Submit</button>
+  		
+  		<input type="button" id="add" class="btn btn-info" value="AddFile">
+		<div id="file"> </div>
+ 
+	    <input type="button" id="btn" class="btn btn-default" value="Write">
 	  </form>
 	</div>
 	
-	<script type="text/javascript">
- 		//$("선택자").action();
-		$("#contents").summernote({
-			height: 400
-		});
-		
-		$("#btn").click(function(){
-			$("#con").val($("#contents").summernote('code'));
-			$("#frm").submit();
-		});
-	</script>
+	<script type="text/javascript" src="../resources/js/boardForm.js">		
+	</script> 
 </body>
 </html>

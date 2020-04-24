@@ -12,14 +12,18 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-	<div class="row">
-			<h2>Title : ${vo.title}</h2>
-			<h2>Writer :${vo.writer} </h2>
-			<h2>Contents : ${vo.contents}</h2>
-			<h2>Date : ${vo.regDate}</h2>
-			<h2>Hit : ${vo.hit}</h2>	
-	</div>
-	<div>
+			<div class="panel panel-info">
+				<div class="panel-heading">TITLE</div>
+				<div class="panel-body">${vo.title}</div>
+				<div class="panel-heading">Writer</div>
+				<div class="panel-body">${vo.writer}</div>
+				<div class="panel-heading">Contents</div>
+				<div class="panel-body">${vo.contents}</div>
+			</div>
+			<div class="panel panel-warning">
+				<div class="panel-heading">${vo.regDate}</div>
+			</div>
+	
 		<c:catch>
 			<c:choose>
 				<c:when test="${board ne 'notice'}">
@@ -39,8 +43,6 @@
 		</c:catch>
 		
 		
-	</div>
-	<br> <br> <br> <br>
 	</div>
 </body>
 </html>

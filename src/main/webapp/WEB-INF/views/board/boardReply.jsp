@@ -13,7 +13,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 	  <h1>답글 쓰기</h1>
-	  <form action="./${board}Reply" method="post">
+	  <form action="./${board}Reply" method="post" id="frm">
 	 	
 	 	<input type="hidden" name="num" value="${num}">
 	   	<div class="form-group">
@@ -28,21 +28,17 @@
 	    
 	    <div class="form-group">
 	      <label for="contents">내용 </label> <br/>
-	      <input type="text" class="form-control" id="contents" placeholder="Enter Contents" name="contents">
+	      <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 	    </div>  
-		<input type="hidden" id="con" name="contents">
+  		
+  		<input type="button" id="add" class="btn btn-info" value="AddFile">
+		<div id="file"> </div>
 		
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    <input type="button" id="btn" class="btn btn-default" value="Write">
 	  </form>
 	</div>
-	<script type="text/javascript">
-		$("#contents").summernote({
-			height: 400
-		});
-		$("#btn").click(function(){
-			$("#con").val($("#contents").summernote('code'));
-			$("#frm").submit();
-		});
-	</script>
+	
+	<script type="text/javascript" src="../resources/js/boardForm.js">		
+	</script> 
 </body>
 </html>
