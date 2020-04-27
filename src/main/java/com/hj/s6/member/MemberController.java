@@ -1,5 +1,6 @@
 package com.hj.s6.member;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -99,11 +100,61 @@ public class MemberController {
 	
 		return mv;
 	}
+	
 	@PostMapping("memberIdCheck")
 	public ModelAndView memberIdCheck(String id, ModelAndView mv) throws Exception {
 		long res = memberService.memberIdCheck(id);
 		mv.addObject("result", res);
 		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("membersDelete")
+	public ModelAndView membersDelete(String[] ids, ModelAndView mv) throws Exception{
+		List<String> list = Arrays.asList(ids); 		//배열을 List로 변환 
+		int res = memberService.membersDelete(list);
+		mv.addObject("result", res);
+		mv.setViewName("common/ajaxResult");
+		return mv;
+	}
+	
+	@GetMapping("memberLists")
+	public ModelAndView memberLists(Pager pager, ModelAndView mv) throws Exception{
+		List<MemberVO> ar = memberService.memberList(pager);
+		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
+		mv.setViewName("member/memberLists");
+		return mv;
+	}
+	
+	@GetMapping("memberDelete")
+	public ModelAndView memberDelete(HttpSession session, ModelAndView mv) throws Exception{
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		int res = memberService.memberDelete(memberVO.getId()); 
+		String msg="Delete Fail";
+		if(res>0) {
+			msg = "Delete Success"; 
+			session.invalidate();
+		} 
+		mv.addObject("result",msg);
+		mv.addObject("path", "../");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
+	@GetMapping("memberUpdate")
+	public ModelAndView memberUpdate(ModelAndView mv) throws Exception{
+		mv.setViewName("member/memberUpdate");
+		return mv;
+	}
+	
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(MemberVO memberVO, HttpSession session, ModelAndView mv) throws Exception{
+		int res = memberService.memberUpdate(memberVO);
+		if(res>0) {
+			session.setAttribute("member", memberVO);
+			mv.setViewName("member/memberPage");
+		}
 		return mv;
 	}
 }

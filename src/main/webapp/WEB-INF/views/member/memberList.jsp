@@ -32,18 +32,26 @@
 			    </div>
 			</form>
 			 
+			<div id="result">
 			<!-- 멤버리스트 -->
 			<table class="table table-hover">
 				<tr>
 					<td>ID</td>
 					<td>NAME</td>
 					<td>EMAIL</td>
+					<td>
+						<input type="checkbox" id="all">
+						<button class="btn btn-danger" id="delete">DELETE</button>
+					</td>
 				</tr>
 				<c:forEach items="${list}" var="vo">
 					<tr>
 						<td>${vo.id}</td>
 						<td>${vo.name}</td>
 						<td>${vo.email}</td>
+						<td>
+							<input type="checkbox" name="del" class="chks" value="${vo.id}"> 
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -63,6 +71,8 @@
 					</c:if>
 				</ul>
 			</div>
+			</div>
+			
 			<c:catch>
 				<c:if test="${member.id eq 'admin'}">
 					<div>
@@ -71,8 +81,49 @@
 					</div>
 				</c:if>
 			</c:catch>
+			
 		</div>
 		<br> <br> <br> <br>
 	</div>
+	<script>
+		//이벤트 위임 
+		$("#result").on("click", "#all", function(){
+			$(".chks").prop("checked", $("#all").prop("checked"));
+		});
+		
+		$("#result").on("click", ".chks", function(){
+			var res = true;
+			$(".chks").each(function(){
+				if($(this).prop("checked")==false){
+					res = false;	
+				}
+			});
+			$("#all").prop("checked", res);	
+		});
+	
+		$("#result").on("click", "#delete", function(){
+			var ids = [];
+			$(".chks").each(function(){
+				if($(this).prop("checked")){
+					ids.push($(this).val());
+				}
+			});
+			$.ajax({
+				type: "GET",
+				url: "./membersDelete",
+				data: {ids: ids},
+				traditional : true,	//파라미터로 배열을 넘기는 경우 이걸 추가해줘야 넘어간다.  
+				success: function(data){
+					$.get("memberLists", function(data){
+						$("#result").html(data.trim());
+					});
+				}
+			});		
+		});
+	
+
+	</script>
+	
+	
 </body>
 </html>

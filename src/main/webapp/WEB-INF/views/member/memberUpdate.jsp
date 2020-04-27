@@ -53,14 +53,5 @@
 	    <button class="btn btn-primary">Update</button>
 	  </form> 
 	</div>
-	
-	<script type="text/javascript">
-		<c:if test="${method eq 'POST' and result ne 1}">
-				alert('비밀번호 일치하지 않아 정보 수정에 실패하였습니다');
-   		</c:if>
-	</script>
-	
-	    
-	
 </body>
 </html>

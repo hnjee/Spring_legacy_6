@@ -4,6 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace = "com.hj.s6.member.MemberDAO">
+	<resultMap type="MemberVO" id="loginResult">
+		<id column="id" property="id"/>
+		<result column="pw" property="pw"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="age" property="age"/>
+		<!-- 1개인 경우 1:1-->
+		<association property="memberFileVO" javaType="MemberFileVO">
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+	</resultMap>
+	
 	<sql id="search">
 	  like '%'||#{search}||'%'
 	</sql>
@@ -43,4 +57,19 @@
 	<select id="memberIdCheck" parameterType="String" resultType="Long">
 		select count(id) from member where id=#{id}
 	</select>
+	
+	<delete id="memberDelete" parameterType="String">
+		delete member where id=#{id}
+	</delete>
+	
+	<delete id="membersDelete" parameterType="List">
+		delete member where id in
+		  <foreach collection="list" item="id" open="(" separator="," close=")">
+		  	#{id}
+		  </foreach>
+	</delete>
+	
+	<update id="memberUpdate" parameterType="MemberVO">
+		update member set pw=#{pw}, name=#{name}, age=#{age}, phone=#{phone}, email=#{email} where id=#{id}
+	</update>
 </mapper>
