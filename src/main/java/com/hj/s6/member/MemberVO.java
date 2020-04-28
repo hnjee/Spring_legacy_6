@@ -1,5 +1,7 @@
 package com.hj.s6.member;
 
+import com.hj.s6.member.memberFile.MemberFileVO;
+
 public class MemberVO {
 	private String id;
 	private String pw;
@@ -7,6 +9,14 @@ public class MemberVO {
 	private int age;
 	private String email;
 	private String phone;
+	private MemberFileVO memberFileVO;
+	
+	public MemberFileVO getMemberFileVO() {
+		return memberFileVO;
+	}
+	public void setMemberFileVO(MemberFileVO memberFileVO) {
+		this.memberFileVO = memberFileVO;
+	}
 	
 	public String getId() {
 		return id;

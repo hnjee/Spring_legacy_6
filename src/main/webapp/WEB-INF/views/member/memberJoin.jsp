@@ -21,7 +21,7 @@
 	
 	<div class="container">
 	  <h1>Member Join</h1>
-	  <form action="./memberJoin" method="post">
+	  <form action="./memberJoin" method="post" enctype="multipart/form-data">
 	    <div class="form-group">
 	      <label for="id">아이디:</label>
 	      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
@@ -53,17 +53,14 @@
 	    </div> 
 	    
  	   	<div class="form-group">
- 	   	 	<label for="avatar">Avatar: </label>
-			<input type="file" class="form-control" id="avatar" name="avatar">
-		</div>				
-
-		<div class="form-group">
-			<button type="submit" class="btn btn-default">Submit</button>
-		</div>
+ 	   		<input type="file" class="form-control" id="pic" name="avatar">
+		</div>			
+		
+		<button type="submit" class="btn btn-default">Submit</button>
 	  </form>
 	</div>
 	
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$("#id").blur(function(){
 			var id = $("#id").val();
 			$.ajax({
@@ -80,7 +77,6 @@
 				}
 			});
 			
-			
 			/* //ajax 
 			$.post("./memberIdCheck", {id:id}, function(data){
 				data=data.trim();
@@ -89,6 +85,6 @@
 				} 
 			}); */
 		});
-	</script>
+	</script> -->
 </body>
 </html>

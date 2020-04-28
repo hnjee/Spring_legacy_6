@@ -14,10 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.hj.s6.util.Pager;
-
-
 
 @Controller
 @RequestMapping("/member/**")
@@ -25,6 +24,28 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping("memberJoin")
+	public ModelAndView memberJoin(ModelAndView mv) {
+		mv.setViewName("member/memberJoin");
+		return mv;
+	}
+	
+	@PostMapping("memberJoin")
+	public ModelAndView memberJoin(MemberVO memberVO, MultipartFile avatar, HttpSession session,  ModelAndView mv) throws Exception {
+		System.out.println("avatar: " + avatar);
+		
+		int res = memberService.memberJoin(memberVO, avatar, session);
+		String msg = "Join Success"; 
+		if(res<0) {
+			msg="Join Fail";
+		} 
+		mv.addObject("result",msg);
+		mv.addObject("path", "../");
+		mv.setViewName("common/result");
+	
+		return mv;
+	}
+
 	@RequestMapping(value="memberList", method=RequestMethod.GET)
 	public ModelAndView boardList(Pager memberPager, ModelAndView mv) throws Exception{
 		List<MemberVO> ar = memberService.memberList(memberPager);
@@ -65,6 +86,7 @@ public class MemberController {
 			mv.addObject("path", "./memberLogin");
 			mv.setViewName("common/result");
 		}
+		
 		return mv;
 	}
 	
@@ -78,26 +100,6 @@ public class MemberController {
 	@GetMapping("memberPage")
 	public ModelAndView memberPage(ModelAndView mv) {
 		mv.setViewName("member/memberPage");
-		return mv;
-	}
-	
-	@GetMapping("memberJoin")
-	public ModelAndView memberJoin(ModelAndView mv) {
-		mv.setViewName("member/memberJoin");
-		return mv;
-	}
-	
-	@PostMapping("memberJoin")
-	public ModelAndView memberJoin(MemberVO memberVO, ModelAndView mv) throws Exception {
-		int res = memberService.memberJoin(memberVO);
-		String msg = "Join Success"; 
-		if(res<0) {
-			msg="Join Fail";
-		} 
-		mv.addObject("result",msg);
-		mv.addObject("path", "../");
-		mv.setViewName("common/result");
-	
 		return mv;
 	}
 	

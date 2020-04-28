@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.hj.s6.util.Pager;
 
-
-
 @Repository
 public class MemberDAO {
 	@Autowired

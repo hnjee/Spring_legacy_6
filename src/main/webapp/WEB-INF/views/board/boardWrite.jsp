@@ -13,8 +13,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 	  <h1>글쓰기</h1>
-	  <form action="./${board}Write" method="post" id="frm">
-	 
+	  <form action="./${board}Write" id="frm" method="post" enctype="multipart/form-data">
 	   <div class="form-group">
 	      <label for="title">제목</label> <br/>
 	      <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
@@ -29,15 +28,36 @@
 	      <label for="contents">내용 </label> <br/>
 	      <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 	    </div>  
-  		
+	 
   		<input type="button" id="add" class="btn btn-info" value="AddFile">
-		<div id="file"> </div>
- 
+			<div id="file"> </div>
+
 	    <input type="button" id="btn" class="btn btn-default" value="Write">
 	  </form>
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/boardForm.js">		
-	</script> 
+	<!-- <script type="text/javascript" src="../resources/js/boardForm.js">		
+	</script>  -->
+	
+	<script type="text/javascript">
+		$("#contents").summernote({
+			height:300,
+			callbacks:{
+				onImageUpload: function(files){
+					$.ajax({
+						type:"POST",
+						url: "../boardFile/fileInsert",
+						enctype: "multipart/form-data",
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function(imgName){
+							
+						}
+					})
+				}
+			}
+		});
+	</script>
 </body>
 </html>

@@ -11,24 +11,30 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileSaver {
 	
-	// 1. 폴더 생성
-	// 2. 저장할 파일명 생성
-	// 3. 파일 HDD 저장
+	//파일 저장 방법 3가지
+	//1. FileCopyUtils
+	//2. MultipartFile  
+	//3. OutputStream 
 	
 	//1. FileCopyUtils 클래스 사용
 	public String saveByUtils(MultipartFile file, String path)throws Exception{
+		// 1) 폴더 생성
+		// 2) 저장할 파일명 생성
+		// 3) 파일 HDD 저장
+		
+		// 1) 폴더 생성 
 		File f = new File(path);
 		if(!f.exists()) {
 			//resources/memberUpload
 			//resources/upload/member
-			f.mkdirs();
+			f.mkdirs(); //디렉토리 생성 다시 해주기 
 		}
 		
-		//a. 저장할 파일명 생성
+		// 2) 저장할 파일명 생성
 		String fileName = this.makeNameByUUID(file.getOriginalFilename());
 		f = new File(f, fileName);
 		
-		//b. HDD에 저장
+		// 3) 파일 HDD 저장
 		FileCopyUtils.copy(file.getBytes(), f);
 		
 		return fileName;
@@ -64,13 +70,14 @@ public class FileSaver {
 		return fileName;
 	}
 	
-	
+	//중복되지 않게 파일명 생성하는 메서드 (1) - UUID 사용 
 	private String makeNameByUUID(String name) {
 		String result = UUID.randomUUID().toString();
 		result = result+"_"+name;
 		return result;
 	}
 	
+	//중복되지 않게 파일명 생성하는 메서드 (2) - Calendar 사용 
 	private String makeNameByTime(String name) {
 		Calendar ca = Calendar.getInstance();
 		Long l = ca.getTimeInMillis();

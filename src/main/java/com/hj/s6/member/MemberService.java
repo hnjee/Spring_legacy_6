@@ -28,9 +28,9 @@ public class MemberService {
 		long totalCount = memberDAO.memberCount(memberPager); 
 		memberPager.makePage(totalCount);
 		
-		System.out.println(totalCount);
-		System.out.println(memberPager.getTotalPage());
-		System.out.println(memberPager.getTotalBlock());
+//		System.out.println(totalCount);
+//		System.out.println(memberPager.getTotalPage());
+//		System.out.println(memberPager.getTotalBlock());
 		return memberDAO.memberList(memberPager);
 	}
 	
@@ -60,21 +60,24 @@ public class MemberService {
 	
 	public int memberJoin(MemberVO memberVO, MultipartFile avatar, HttpSession session)throws Exception{
 		//HDD에 저장 resources/memberUpload/
-		//1. 파일을 HDD 에 저장
-		
+		//파일을 HDD에 저장
 		String path = session.getServletContext().getRealPath("/resources/memberUpload");
-		System.out.println(path);
 		String fileName = fileSaver.saveByUtils(avatar, path);
+		System.out.println(path);
+		System.out.println(fileName);
 		
+		//memberFileVO 생성, 세팅 
 		MemberFileVO memberFileVO = new MemberFileVO();
 		memberFileVO.setId(memberVO.getId());
 		memberFileVO.setFileName(fileName);
 		memberFileVO.setOriName(avatar.getOriginalFilename());
-		//2. 파일명을 DB에 저장
 		
-		 int result = memberDAO.memberJoin(memberVO);
-		 result = memberFileDAO.fileInsert(memberFileVO);
-		return result;//memberDAO.memberJoin(memberVO);
+		int result = memberDAO.memberJoin(memberVO);	 	//멤버VO DB에 저장 
+		if(result>0) {
+			result = memberFileDAO.fileInsert(memberFileVO); //파일VO DB에 저장
+		}
+		
+		return result;
 	}
 
 	public int fileDelete(String id, HttpSession session)throws Exception{

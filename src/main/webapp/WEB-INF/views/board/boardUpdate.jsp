@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,8 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-	  <h1>글 수정하기</h1>
-	  <form action="./${board}Update" method="post" id="frm">
-	 
+	  <h1> ${fn:toUpperCase(board)} 수정하기</h1>
+	  <form action="./${board}Update" method="post" id="frm"> 
 	   <input type="hidden" class="form-control" id="num" name="num" value="${vo.num}">
 	   <div class="form-group">
 	      <label for="title">제목</label> <br/>
@@ -38,7 +38,12 @@
 	  </form>
 	</div>
 	
-	<script type="text/javascript" src="../resources/js/boardForm.js">		
+	<script type="text/javascript" src="../resources/js/boardForm.js">	
+		$("#contents").summernote('code', '${vo.contents}');
+		var size = ${size};
+		size = ${vo.boardFileVOs.size()};
+		size = ${fn:length(vo.boardFileVOs)};
+		alert(size);
 	</script> 
 </body>
 </html>
