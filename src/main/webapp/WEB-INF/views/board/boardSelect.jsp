@@ -12,18 +12,27 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-			<div class="panel panel-info">
-				<div class="panel-heading">TITLE</div>
-				<div class="panel-body">${vo.title}</div>
-				<div class="panel-heading">Writer</div>
-				<div class="panel-body">${vo.writer}</div>
-				<div class="panel-heading">Contents</div>
-				<div class="panel-body">${vo.contents}</div>
-			</div>
-			<div class="panel panel-warning">
-				<div class="panel-heading">${vo.regDate}</div>
-			</div>
-	
+		<div class="panel panel-info">
+			<div class="panel-heading">TITLE</div>
+			<div class="panel-body">${vo.title}</div>
+			<div class="panel-heading">Writer</div>
+			<div class="panel-body">${vo.writer}</div>
+			<div class="panel-heading">Contents</div>
+			<div class="panel-body">${vo.contents}</div>
+		</div>
+		<div class="panel panel-warning">
+			<div class="panel-heading">${vo.regDate}</div>
+		</div>
+
+		<div>
+			<c:forEach items="${vo.boardFileVOs}" var="file">
+				<div>
+				
+				<a href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">${file.oriName}</a> 
+				</div>
+			</c:forEach>
+		</div>
+		
 		<c:catch>
 			<c:choose>
 				<c:when test="${board ne 'notice'}">

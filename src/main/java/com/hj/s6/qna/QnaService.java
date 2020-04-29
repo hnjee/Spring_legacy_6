@@ -3,6 +3,7 @@ package com.hj.s6.qna;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hj.s6.board.BoardService;
 import com.hj.s6.board.BoardVO;
@@ -27,7 +28,7 @@ public class QnaService implements BoardService{
 	}
 
 	@Override
-	public int boardWrite(BoardVO boardVO) throws Exception {
+	public int boardWrite(BoardVO boardVO, MultipartFile[] files) throws Exception {
 		return qnaDAO.boardWrite(boardVO);
 	}
 	

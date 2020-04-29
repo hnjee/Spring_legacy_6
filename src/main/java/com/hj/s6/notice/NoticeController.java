@@ -55,8 +55,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView boardWrite(NoticeVO noticeVO, ModelAndView mv)throws Exception{
-		int res = noticeService.boardWrite(noticeVO);
+	public ModelAndView boardWrite(NoticeVO noticeVO, MultipartFile[] files, ModelAndView mv)throws Exception{
+		int res = noticeService.boardWrite(noticeVO, files);
 		if(res>0) {
 			mv.setViewName("redirect:./noticeList");
 		} else {

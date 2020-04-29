@@ -4,6 +4,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.hj.s6.board.BoardDAO;
 import com.hj.s6.board.BoardVO;
 import com.hj.s6.util.Pager;
@@ -14,6 +16,10 @@ public class NoticeDAO implements BoardDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.hj.s6.notice.NoticeDAO.";
+	
+	public long boardNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"boardNum");
+	}
 	
 	@Override
 	public long boardCount(Pager pager) throws Exception {

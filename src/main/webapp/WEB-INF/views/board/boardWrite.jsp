@@ -30,34 +30,14 @@
 	    </div>  
 	 
   		<input type="button" id="add" class="btn btn-info" value="AddFile">
-			<div id="file"> </div>
+		<div id="file"> </div>
 
 	    <input type="button" id="btn" class="btn btn-default" value="Write">
 	  </form>
 	</div>
 	
-	<!-- <script type="text/javascript" src="../resources/js/boardForm.js">		
-	</script>  -->
-	
-	<script type="text/javascript">
-		$("#contents").summernote({
-			height:300,
-			callbacks:{
-				onImageUpload: function(files){
-					$.ajax({
-						type:"POST",
-						url: "../boardFile/fileInsert",
-						enctype: "multipart/form-data",
-						cache: false,
-						contentType: false,
-						processData: false,
-						success: function(imgName){
-							
-						}
-					})
-				}
-			}
-		});
+	<script type="text/javascript" src="../resources/js/boardForm.js">		
 	</script>
+
 </body>
 </html>

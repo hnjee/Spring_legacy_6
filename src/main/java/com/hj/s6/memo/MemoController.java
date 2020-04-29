@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hj.s6.util.Pager;
@@ -31,13 +32,13 @@ public class MemoController {
 	}
 	
 	@PostMapping("memoWrite")
-	public ModelAndView memoWrite(MemoVO memoVO) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public int memoWrite(MemoVO memoVO) throws Exception{
+		//ModelAndView mv = new ModelAndView();
 		int res = memoService.memoWrite(memoVO);
-		mv.addObject("result", res);
-		mv.setViewName("common/ajaxResult");
-		
-		return mv;
+		//mv.addObject("result", res);
+		//mv.setViewName("common/ajaxResult");
+		return res;
 	}
 	
 	

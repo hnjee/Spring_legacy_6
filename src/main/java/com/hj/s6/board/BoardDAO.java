@@ -2,6 +2,8 @@ package com.hj.s6.board;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.hj.s6.util.Pager;
 
 public interface BoardDAO {
