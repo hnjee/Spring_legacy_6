@@ -31,6 +31,7 @@
 	      <textarea rows="20" cols="" class="form-control" id="contents" name="contents"></textarea>
 	    </div>  
 	    
+	    
 	    <input type="button" id="add" class="btn btn-info" value="AddFile">
 		<div id="file"> </div>
   

@@ -25,12 +25,13 @@
 		</div>
 
 		<div>
+			<c:catch>
 			<c:forEach items="${vo.boardFileVOs}" var="file">
 				<div>
-				
-				<a href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">${file.oriName}</a> 
+					<a href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">${file.oriName}</a> 
 				</div>
 			</c:forEach>
+			</c:catch>
 		</div>
 		
 		<c:catch>
