@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="propertyPlaceholderConfigurer">
 		<property name="locations" value="classpath:DB/config/*.properties"></property>
@@ -9,10 +11,10 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-		<property name="username" value="${user}" /> 
-		<property name="password" value="${pw}" />
-		<property name="url" value="${url}"/>
-		<property name="driverClassName" value="${driver}"></property>	
+		<property name="username" value="${oracle.user}" /> 
+		<property name="password" value="${oracle.pw}" />
+		<property name="url" value="${oracle.url}"/>
+		<property name="driverClassName" value="${oracle.driver}"></property>	
 	</bean>
 	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean"> 
@@ -33,4 +35,6 @@
 	      <!--3.  총 파일의 용량 제한 (단위:Byte) -->
 	      <property name="maxUploadSize" value="104857600"></property>
 	</bean>
+	
+
 </beans>
