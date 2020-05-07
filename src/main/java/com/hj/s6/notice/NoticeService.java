@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hj.s6.board.BoardService;
@@ -17,6 +18,7 @@ import com.hj.s6.util.Pager;
 
 
 @Service
+@Transactional
 public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeDAO noticeDAO;

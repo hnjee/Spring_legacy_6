@@ -71,6 +71,15 @@
             <version>${org.aspectj-version}</version> 
         </dependency>
        
+       <!-- spring-transaction -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		       
+       
+       
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
